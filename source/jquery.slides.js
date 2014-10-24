@@ -6,12 +6,12 @@
     defaults = {
       width: 940,
       height: 528,
-      resizeImg: false,
-      lowSize: 610,
-      lowWidth: 611,
-      lowHeight: 340,
-      bigWidth : 1134,
-      bigHeight : 340,
+      difImg: false,
+      mSize: 640,
+      mWidth: 640,
+      mHeight: 340,
+      pcWidth : 1170,
+      pcHeight : 340,
       start: 1,
       navigation: {
         active: true,
@@ -224,21 +224,21 @@
       width = $element.width();
       //diy custom
       
-      if(this.options.resizeImg){
+      if(this.options.difImg){
         var $winW = $(window).width();
         $("img",$element).each(function(i){
           var lowImg = $(this).data('mobile');
           var largetImg = $(this).data('pc');
-          if($winW > _this.options.lowSize){
+          if($winW > _this.options.mSize){
             $(this).attr("src",largetImg);
           }else{
             $(this).attr("src",lowImg);
           }
         })
-        if($winW  < this.options.lowSize){
-         height = (this.options.lowHeight / this.options.lowWidth) * width;
+        if($winW  < this.options.mSize){
+         height = (this.options.mHeight / this.options.mWidth) * width;
         }else{
-          height = (this.options.bigHeight / this.options.bigWidth) * width;
+          height = (this.options.pcHeight / this.options.pcWidth) * width;
         }
       }else{
         height = (this.options.height / this.options.width) * width;
